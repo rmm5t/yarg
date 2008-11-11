@@ -53,11 +53,26 @@ module Yarg
     def define
       task self.name do
         app_name = ENV["APP_NAME"]
-        sh("rails --quiet #{app_name}")
+        sh("rails #{app_name}")
         Dir.chdir(app_name)
         apply_file_actions
+        apply_plugins
+        apply_freeze
       end
       self
+    end
+
+    def apply_plugins
+      plugins.each do |plugin|
+        sh("./script/plugin install #{plugin}")
+      end
+    end
+
+    def apply_freeze
+      return unless frozen
+      if [:gems, :edge].include?(freeze_version.to_sym)
+        sh("rake rails:freeze:#{freeze_version}")
+      end
     end
   end
 end
