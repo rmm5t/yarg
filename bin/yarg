@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'yarg'
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{File.basename($0)} /path/to/your/project"
+
+  opts.on("-h", "--help", "Show this help info and quit") do
+    puts opts
+    exit 0
+  end
+
+  opts.on("-v", "--version", "Show the Yarg version number and quit") do
+    puts "Yarg #{Yarg::VERSION}"
+    exit 0
+  end
+
+  begin
+    opts.parse!(ARGV)
+  rescue OptionParser::ParseError => e
+    warn e.message
+    puts opts
+    exit 1
+  end
+end
+
+#TODO test if file exists
+load "~/.yarg"
+
+#TODO check ARGV size
+ENV["PROJECT_NAME"] = ARGV[0]
+
+#TODO allow for default or for named task
+Rake::Task[:rails].invoke
