@@ -20,8 +20,3 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
 #   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
-
-task :foo do
-  puts self.inspect
-  puts self.class
-end
