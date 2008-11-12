@@ -52,7 +52,7 @@ module Yarg
 
     def define
       task self.name do
-        app_name = ENV["APP_NAME"]
+        app_name = ENV["PROJECT_NAME"]
         sh("rails #{app_name}")
         Dir.chdir(app_name)
         apply_file_actions

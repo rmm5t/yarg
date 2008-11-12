@@ -102,7 +102,7 @@ class RailsTest < Test::Unit::TestCase
   private
 
   def stub_rails_system_calls(app_name)
-    ENV["APP_NAME"] = app_name
+    ENV["PROJECT_NAME"] = app_name
     @generator.stubs(:sh)
     Dir.stubs(:chdir)
     Dir.stubs(:glob)
