@@ -9,7 +9,6 @@ generators to fit your personality or common scaffolding.
 
 Install:
 
-    # TODO, GEM COMING SOON
     gem install rmm5t-yarg --source http://gems.github.com
 
 Configure by placing a <tt>~/.yarg</tt> file in your home directory.  Here's a simple example
@@ -38,7 +37,6 @@ Here's another example:
 
 ## TODO
 
-* Add gemspec
 * Add better option parsing support in script
 * Add template directory support
 * Add rails gem freezing support
