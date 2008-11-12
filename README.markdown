@@ -1,7 +1,8 @@
 # yarg: Yet Another Ruby Generator
 
 Yarg is Yet Another Ruby Generator.  It allows you to customize existing project
-generators to fit your personality or common scaffolding.
+generators to fit your personality or common scaffolding.  In other words, it
+allows you to bootstrap new projects without the typical mundane setup.
 
 **Yarg is still in its infancy.  It currently works for rails generation, but use it at your own risk.**
 
