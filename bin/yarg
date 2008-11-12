@@ -2,6 +2,7 @@
 
 require 'optparse'
 require 'yarg'
+require 'yarg/rails'
 
 OptionParser.new do |opts|
   opts.banner = "Usage: #{File.basename($0)} /path/to/your/project"
