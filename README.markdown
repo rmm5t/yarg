@@ -38,6 +38,8 @@ Here's another example:
 
 ## TODO
 
+* Add gemspec
+* Add better option parsing support in script
 * Add template directory support
 * Add rails gem freezing support
 * Add newgem support
