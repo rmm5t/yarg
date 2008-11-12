@@ -35,6 +35,10 @@ Here's another example:
       rg.freeze :version => :edge
     end
 
+Afterwards, you should be able to launch a new Rails project easily:
+
+    yarg my_new_project
+
 ## TODO
 
 * Add better option parsing support in script
