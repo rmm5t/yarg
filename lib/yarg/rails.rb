@@ -65,13 +65,20 @@ module Yarg
 
     def apply_plugins
       plugins.each do |plugin|
-        sh("./script/plugin install #{plugin}")
+        if scm_module && scm_module.using
+          plugin_name = File.basename(plugin, ".*")
+          exec_commands(scm_module.install_commands(plugin, "vendor/plugins/#{plugin_name}"))
+        else
+          sh("./script/plugin install #{plugin}")
+        end
       end
     end
 
     def apply_freeze
       return unless frozen
-      if [:gems, :edge].include?(freeze_version.to_sym)
+      if scm_module && scm_module.using
+        exec_commands(scm_module.install_commands("git://github.com/rails/rails.git", "vendor/rails"))
+      elsif [:gems, :edge].include?(freeze_version.to_sym)
         sh("rake rails:freeze:#{freeze_version}")
       end
     end
