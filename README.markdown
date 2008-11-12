@@ -39,6 +39,7 @@ Here's another example:
 ## TODO
 
 * Add template directory support
+* Add rails gem freezing support
 * Add newgem support
 * Add merb support
 * Add webby support
