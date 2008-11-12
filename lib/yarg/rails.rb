@@ -58,6 +58,7 @@ module Yarg
         apply_file_actions
         apply_plugins
         apply_freeze
+        apply_scm_commit
       end
       self
     end

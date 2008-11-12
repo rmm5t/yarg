@@ -41,6 +41,7 @@ class RailsTest < Test::Unit::TestCase
   context "A Rails generator with multiple options set" do
     setup do
       @generator = Yarg::Rails.new(:template) do |rg|
+        rg.scm :git #, :using => :submodules
         rg.delete "public/index.html"
         rg.delete "public/dispatch.*"
         rg.plugin "git://github.com/thoughtbot/shoulda.git"
@@ -71,6 +72,9 @@ class RailsTest < Test::Unit::TestCase
       should_invoke "./script/plugin install git://github.com/thoughtbot/shoulda.git"
       should_invoke "./script/plugin install git://github.com/nex3/haml.git"
       should_invoke "rake rails:freeze:edge"
+      should_invoke %r{^git init}
+      should_invoke %r{^git add}
+      should_invoke %r{^git commit}
       should_eventually "overwrite with the template"
     end
   end
