@@ -38,7 +38,6 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options     = ["--line-numbers", "--inline-source", "--main", "README.markdown"]
 
   s.authors = ["Ryan McGeary"]
-  s.email   = "ryanonruby -[at]- mcgeary [*dot*] org"
 end
 
 Rake::GemPackageTask.new spec do |pkg|

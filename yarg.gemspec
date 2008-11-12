@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.authors = ["Ryan McGeary"]
   s.date = %q{2008-11-12}
   s.default_executable = %q{yarg}
-  s.email = %q{ryanonruby -[at]- mcgeary [*dot*] org}
   s.executables = ["yarg"]
   s.extra_rdoc_files = ["README.markdown"]
   s.files = ["Rakefile", "README.markdown", "bin/yarg", "lib/yarg", "lib/yarg/file_actions.rb", "lib/yarg/rails.rb", "lib/yarg/scm", "lib/yarg/scm/git.rb", "lib/yarg/scm.rb", "lib/yarg.rb", "test/file_actions_test.rb", "test/rails_test.rb", "test/scm_test.rb", "test/test_helper.rb"]
