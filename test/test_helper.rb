@@ -3,6 +3,7 @@ require 'rubygems'
 require 'shoulda'
 require 'mocha'
 begin require 'redgreen' if ENV['TM_FILENAME'].nil?; rescue LoadError; end
+require 'yarg'
 
 module ShouldaHelper
   module Macros
@@ -25,8 +26,8 @@ module ShouldaHelper
     end
 
     def should_have_generator_attribute_of(attribute, expected)
-      should "have attribute of #{attribute.inspect} equal to #{expected.inspect}" do
-        assert_equal expected, @generator.send(attribute)
+      should "have attribute of #{attribute.inspect} matching #{expected.inspect}" do
+        assert_operator expected, :===, @generator.send(attribute)
       end
     end
 
