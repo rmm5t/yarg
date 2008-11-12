@@ -9,7 +9,7 @@ generators to fit your personality or common scaffolding.
 
 Install:
 
-    gem install rmm5t-yarg --source http://gems.github.com
+    $ gem install rmm5t-yarg --source http://gems.github.com
 
 Configure by placing a <tt>~/.yarg</tt> file in your home directory.  Here's a simple example
 
@@ -37,7 +37,7 @@ Here's another example:
 
 Afterwards, you should be able to launch a new Rails project easily:
 
-    yarg my_new_project
+    $ yarg my_new_project
 
 ## TODO
 
