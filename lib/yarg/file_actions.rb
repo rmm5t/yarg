@@ -44,7 +44,10 @@ module Yarg
     end
 
     def apply_templates
-      # TODO
+      self.templates.each do |path|
+        sources = Dir.glob(File.join(File.expand_path(path), "*"))
+        FileUtils.cp_r(sources, ".", :verbose => true)
+      end
     end
 
     def apply_scm_init

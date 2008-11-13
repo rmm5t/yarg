@@ -13,7 +13,7 @@ class RailsTest < Test::Unit::TestCase
   context "An empty default Rails generator" do
     setup do
       @generator = Yarg::Rails.new do |rg| end
-      stub_rails_system_calls("my_app")
+      stub_fake_system_calls("my_app")
     end
 
     should_define_task :rails
@@ -46,10 +46,10 @@ class RailsTest < Test::Unit::TestCase
         rg.delete "public/dispatch.*"
         rg.plugin "git://github.com/thoughtbot/shoulda.git"
         rg.plugin "git://github.com/nex3/haml.git"
-        rg.template "~/.yarg.d/rails"
+        rg.template "/tmp/.yarg.d/rails"
         rg.freeze :version => :edge
       end
-      stub_rails_system_calls("my_rails_project")
+      stub_fake_system_calls("my_rails_project")
     end
 
     should_define_task :template
@@ -57,7 +57,7 @@ class RailsTest < Test::Unit::TestCase
     should_have_generator_attribute_of :scm_module, Yarg::Scm::Git
     should_have_generator_attribute_of :deletions,  %w(public/index.html public/dispatch.*)
     should_have_generator_attribute_of :plugins,    %w(git://github.com/thoughtbot/shoulda.git git://github.com/nex3/haml.git)
-    should_have_generator_attribute_of :templates,  %w(~/.yarg.d/rails)
+    should_have_generator_attribute_of :templates,  %w(/tmp/.yarg.d/rails)
     should_have_generator_attribute_of :frozen,     true
     should_have_generator_attribute_of :freeze_version, :edge
 
@@ -85,7 +85,7 @@ class RailsTest < Test::Unit::TestCase
       @generator = Yarg::Rails.new do |rg|
         rg.freeze
       end
-      stub_rails_system_calls("my_app")
+      stub_fake_system_calls("my_app")
     end
 
     should_have_generator_attribute_of :frozen, true
@@ -111,7 +111,7 @@ class RailsTest < Test::Unit::TestCase
         rg.plugin "git://github.com/nex3/haml.git"
         rg.freeze :version => :edge
       end
-      stub_rails_system_calls("my_app")
+      stub_fake_system_calls("my_app")
     end
 
     should_have_generator_attribute_of :scm_module, Yarg::Scm::Git
@@ -127,17 +127,5 @@ class RailsTest < Test::Unit::TestCase
       should_invoke %r{^git add}
       should_invoke %r{^git commit}
     end
-  end
-
-  private
-
-  def stub_rails_system_calls(app_name)
-    ENV["PROJECT_NAME"] = app_name
-    @generator.stubs(:sh)
-    Dir.stubs(:chdir)
-    Dir.stubs(:glob)
-    Dir.stubs(:glob).with("public/index.html").returns(%w(public/index.html))
-    Dir.stubs(:glob).with("public/dispatch.*").returns(%w(public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb))
-    File.stubs(:delete)
   end
 end

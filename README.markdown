@@ -10,23 +10,21 @@ allows you to bootstrap new projects without the typical mundane setup.
 
 Install:
 
-    $ gem install rmm5t-yarg --source http://gems.github.com
+    $ sudo gem install rmm5t-yarg --source http://gems.github.com
 
 Configure by placing a <tt>~/.yarg</tt> file in your home directory.  Here's a simple example
 
     Yarg::Rails.new do |rg|
       rg.scm :git
       rg.delete "public/index.html"
-      rg.delete "public/dispatch.*"
       rg.plugin "git://github.com/thoughtbot/shoulda.git"
-      rg.plugin "git://github.com/nex3/haml.git"
-      rg.freeze
     end
 
 Here's another example:
 
     Yarg::Rails.new do |rg|
       rg.scm :git, :using => :submodules
+      rg.template "~/.yarg.d/rails"
       rg.delete "public/index.html"
       rg.delete "public/dispatch.*"
       rg.plugin "git://github.com/thoughtbot/shoulda.git"
@@ -42,8 +40,8 @@ Afterwards, you should be able to launch a new Rails project easily:
 
 ## TODO
 
-* Add better option parsing support in script
-* Add template directory support
+* Add better option parsing support in script (including a template name option)
+* Add better handling of error conditions
 * Add rails gem freezing support
 * Add newgem support
 * Add merb support

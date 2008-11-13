@@ -76,13 +76,27 @@ class FileActionsTest < Test::Unit::TestCase
     end
   end
 
-  private
+  context "A Fake generator with a template" do
+    setup do
+      @generator = FakeGen.new do |rg|
+        rg.template "/tmp/.yarg.d/rails"
+      end
+      stub_fake_system_calls("my_app")
+    end
 
-  def stub_fake_system_calls(project_name)
-    ENV["PROJECT_NAME"] = project_name
-    @generator.stubs(:sh)
-    Dir.stubs(:mkdir)
-    Dir.stubs(:chdir)
-    File.stubs(:delete)
+    should_have_generator_attribute_of :templates,  %w(/tmp/.yarg.d/rails)
+
+    context "once invoked" do
+      setup do
+        Rake::Task[:fake].invoke
+      end
+
+      should_cd_into "my_app"
+      should_not_delete_any_files
+
+      before_should "copy template files from" do
+        FileUtils.expects(:cp_r).with(["/tmp/.yarg.d/rails"], ".", :verbose => true)
+      end
+    end
   end
 end

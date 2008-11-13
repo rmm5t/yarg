@@ -69,4 +69,17 @@ end
 
 class Test::Unit::TestCase
   extend ShouldaHelper::Macros
+
+  def stub_fake_system_calls(project_name)
+    ENV["PROJECT_NAME"] = project_name
+    @generator.stubs(:sh)
+    Dir.stubs(:mkdir)
+    Dir.stubs(:chdir)
+    Dir.stubs(:glob)
+    Dir.stubs(:glob).with("public/index.html").returns(%w(public/index.html))
+    Dir.stubs(:glob).with("public/dispatch.*").returns(%w(public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb))
+    Dir.stubs(:glob).with("/tmp/.yarg.d/rails/*").returns(["/tmp/.yarg.d/rails"])
+    File.stubs(:delete)
+    FileUtils.stubs(:cp_r)
+  end
 end
