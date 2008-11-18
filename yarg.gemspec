@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{yarg}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ryan McGeary"]
-  s.date = %q{2008-11-13}
+  s.date = %q{2008-11-18}
   s.default_executable = %q{yarg}
   s.description = %q{Yet Another Ruby Generator: Customize existing project generators to fit your personality.}
   s.email = %q{}
@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Yarg", "--main", "README.markdown"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{yarg}
-  s.rubygems_version = %q{1.3.0}
+  s.rubygems_version = %q{1.3.1}
   s.summary = %q{Yet Another Ruby Generator}
   s.test_files = ["test/file_actions_test.rb", "test/rails_test.rb", "test/scm_test.rb", "test/test_helper.rb"]
 
