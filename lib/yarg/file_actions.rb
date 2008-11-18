@@ -45,7 +45,8 @@ module Yarg
 
     def apply_templates
       self.templates.each do |path|
-        sources = Dir.glob(File.join(File.expand_path(path), "*"))
+        everything_including_dotfiles = "{.[!.]*,*}"
+        sources = Dir.glob(File.join(File.expand_path(path), everything_including_dotfiles))
         FileUtils.cp_r(sources, ".", :verbose => true)
       end
     end

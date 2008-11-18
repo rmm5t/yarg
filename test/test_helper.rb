@@ -78,7 +78,7 @@ class Test::Unit::TestCase
     Dir.stubs(:glob)
     Dir.stubs(:glob).with("public/index.html").returns(%w(public/index.html))
     Dir.stubs(:glob).with("public/dispatch.*").returns(%w(public/dispatch.cgi public/dispatch.fcgi public/dispatch.rb))
-    Dir.stubs(:glob).with("/tmp/.yarg.d/rails/*").returns(["/tmp/.yarg.d/rails"])
+    Dir.stubs(:glob).with("/tmp/.yarg.d/rails/{.[!.]*,*}").returns(["/tmp/.yarg.d/rails"])
     File.stubs(:delete)
     FileUtils.stubs(:cp_r)
   end
