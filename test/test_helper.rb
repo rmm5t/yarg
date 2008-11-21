@@ -2,7 +2,7 @@ require 'test/unit'
 require 'rubygems'
 require 'shoulda'
 require 'mocha'
-begin require 'redgreen' if ENV['TM_FILENAME'].nil?; rescue LoadError; end
+begin require 'redgreen' unless ENV['TM_FILENAME']; rescue LoadError; end
 require 'yarg'
 
 module ShouldaHelper
