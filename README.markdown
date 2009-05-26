@@ -4,6 +4,8 @@ Yarg is Yet Another Ruby Generator.  It allows you to customize existing project
 generators to fit your personality or common scaffolding.  In other words, it
 allows you to bootstrap new projects without the typical mundane setup.
 
+**While I still have a fondness for the approach taken here, I've abandoned this project (for now).  My original need for this project was mostly fulfilled when [Rails Templates](http://m.onkey.org/2008/12/4/rails-templates) were introduced in Rails 2.3.  _When you can't beat 'em, join 'em._**
+
 **Yarg is still in its infancy.  It currently works for rails generation, but use it at your own risk.**
 
 ## Usage
